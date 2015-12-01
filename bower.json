@@ -1,0 +1,30 @@
+{
+  "name": "ClubRegistrations.Client",
+  "version": "0.0.0",
+  "homepage": "https://github.com/kgohery/ClubRegistrations",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular": "~1.4.7",
+    "angular-ui-router": "~0.2.15",
+    "angular-messages": "~1.4.7",
+    "font-awesome": "~4.5.0",
+    "bootstrap": "~3.3.6"
+  },
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "dist/js/bootstrap.js",
+        "dist/css/bootstrap.css",
+        "less/bootstrap.less"
+      ]
+    }
+  }
+}

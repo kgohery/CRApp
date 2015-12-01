@@ -1,0 +1,23 @@
+<form name="personForm" ng-submit="vm.save(personForm.$valid)" novalidate>
+	<div ng-repeat="person in vm.people track by $index">
+		<div class="form-group">
+			<label>Person {{$index + 1}}</label>
+		</div>
+		<div class="form-group" ng-class="{ 'has-error' : personForm.firstName{{$index}}.$invalid && personForm.firstName{{$index}}.$touched }">
+			<input name="firstName{{$index}}" type="text" ng-model="vm.people[$index].firstName" ng-model-options="{'updateOn':'blur'}" placeholder="First Name *" required ng-minlength="4" class="form-control" />
+			
+		</div>
+		<div class="form-group" ng-class="{ 'has-error' : personForm.lastName{{$index}}.$invalid && personForm.lastName{{$index}}.$touched }">
+			<input type="text" name="lastName{{$index}}" ng-model="vm.people[$index].lastName" ng-model-options="{'updateOn':'blur'}" placeholder="Last Name *" class="form-control" required />
+		</div>
+		<div class="form-group" ng-class="{ 'has-error' : personForm.dob{{$index}}.$invalid && personForm.dob{{$index}}.$touched }">
+			<input type="text" ng-model="vm.people[$index].dob" ng-model-options="{'updateOn':'blur'}" placeholder="Date of birth *" class="form-control" required />
+		</div>
+	</div>
+	<div class="form-group">
+		<button type="button" ng-click="vm.addEmpty();">Add Person</button>
+	</div>
+	<div class="form-group">
+		<button type="submit">Save</button>
+	</div>
+</form>

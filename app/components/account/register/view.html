@@ -1,0 +1,33 @@
+<form ng-controller="RegisterCtrl as vm">
+	<div class="form-group">
+		<label for="txtUser">First Name</label>
+		<input type="textbox" class="form-control" id="txtFirstName" placeholder="First Name" ng-model="vm.firstName">
+	</div>
+	<div class="form-group">
+		<label for="txtLastName">Surname</label>
+		<input type="textbox" class="form-control" id="txtLastName" placeholder="Surname" ng-model="vm.lastName">
+	</div>
+	<div class="form-group">
+		<label for="txtEmail">Email</label>
+		<input type="email" class="form-control" id="txtEmail" placeholder="Email" ng-model="vm.email">
+	</div>
+	<div class="form-group">
+		<label for="txtDOB">Date of Birth</label>
+		<input type="date" class="form-control" id="txtDOB" placeholder="Date of Birth" ng-model="vm.dob">
+	</div>
+	<label class="radio-inline">
+		<input type="radio" name="radioGender" id="radioMale" ng-model="vm.gender" ng-value="0"> Male
+	</label>
+	<label class="radio-inline">
+		<input type="radio" name="radioGender" id="radioFemale" value="1" ng-model="vm.gender" ng-value="1"> Female
+	</label>
+	<div class="form-group">
+		<label for="txtUsername">Username</label>
+		<input type="textbox" class="form-control" id="txtUsername" placeholder="Username" ng-model="vm.username">
+	</div>
+	<div class="form-group">
+		<label for="txtPassword">Password</label>
+		<input type="password" class="form-control" id="txtPassword" placeholder="Password" ng-model="vm.password">
+	</div>
+	<button type="submit" class="btn btn-default" ng-click="vm.doRegister()">Submit</button>
+</form>

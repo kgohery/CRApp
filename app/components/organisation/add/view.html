@@ -1,0 +1,52 @@
+<form name="orgAddForm" ng-submit="vm.add(orgAddForm.$valid)" novalidate>
+	<div class="panel panel-primary">
+		<div class="panel-heading">Organisation Name</div>
+		<div class="panel-body">
+			<div class="form-group" ng-class="{ 'has-error': orgAddForm.txtOrgName.$touched && orgAddForm.txtOrgName.$invalid }">
+				<input type="textbox" class="form-control" name="txtOrgName" placeholder="Organisation Name *" ng-model="vm.name" required>
+			</div>
+		</div>
+	</div>
+	
+	<div class="panel panel-primary">
+		<div class="panel-heading">Organisation Address</div>
+		<div class="panel-body">
+			<div class="form-group" ng-class="{ 'has-error': orgAddForm.txtAddress1.$touched && orgAddForm.txtAddress1.$invalid }">
+				<input type="textbox" class="form-control" name="txtAddress1" placeholder="Address 1 *" ng-model="vm.address1" required>
+			</div>
+			<div class="form-group">
+				<input type="textbox" class="form-control" name="txtAddress2" placeholder="Address 2" ng-model="vm.address2">
+			</div>
+			<div class="form-group">
+				<input type="textbox" class="form-control" name="txtAddress3" placeholder="Address 3" ng-model="vm.address3">
+			</div>
+			<div class="row">
+				<div class="form-group col-xs-4" ng-class="{ 'has-error': orgAddForm.txtCity.$touched && orgAddForm.txtCity.$invalid }">
+					<input type="textbox" class="form-control" name="txtCity" placeholder="City *" ng-model="vm.city" required>
+				</div>
+				<div class="form-group col-xs-4" ng-class="{ 'has-error': orgAddForm.txtState.$touched && orgAddForm.txtState.$invalid }">
+					<input type="textbox" class="form-control" name="txtState" placeholder="State / County *" ng-model="vm.state" required>
+				</div>
+				<div class="form-group col-xs-4">
+					<input type="textbox" class="form-control" name="txtPostcode" placeholder="Postcode" ng-model="vm.postcode">
+				</div>
+			</div>
+			<div class="form-group">
+				<input type="textbox" class="form-control" name="txtCountry" placeholder="Country *" ng-model="vm.country" required>
+			</div>
+
+			<div class="form-group row">
+				<div class="col-xs-6">
+					<input type="textbox" class="form-control" name="txtLat" placeholder="Latitude" ng-model="vm.latitude">
+				</div>
+				<div class="col-xs-6">
+					<input type="textbox" class="form-control" name="txtLongitude" placeholder="Longitude" ng-model="vm.longitude">
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+	<button type="submit" class="btn" ng-class="{ 'btn-default' : !orgAddForm.$valid, 'btn-success': orgAddForm.$valid }" ng-click="vm.add()" ng-disabled="!orgAddForm.$valid">Submit</button>
+</form>

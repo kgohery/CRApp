@@ -1,0 +1,11 @@
+<form ng-controller="LoginCtrl as vm">
+	<div class="form-group">
+		<label for="txtUser">Username</label>
+		<input type="textbox" class="form-control" id="txtUser" placeholder="Username" ng-model="vm.username">
+	</div>
+	<div class="form-group">
+		<label for="txtPassword">Password</label>
+		<input type="password" class="form-control" id="txtPassword" placeholder="Password" ng-model="vm.password">
+	</div>
+	<button type="submit" class="btn btn-default" ng-click="vm.doLogin()">Submit</button>
+</form>
