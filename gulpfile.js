@@ -81,31 +81,30 @@ gulp.task('inject', ['wiredep', 'styles', 'templatecache'], function () {
 gulp.task ('optimise', ['inject', 'fonts', 'images'], function () {
 	log('Optimising and annotate the javascript, css and html');
 	
-	var templateCache = config.temp + config.templateCache.file,
+	var lazypipe = require('lazypipe'),
+		templateCache = config.temp + config.templateCache.file,
 		cssFilter = $.filter('**/*.css', {restore: true}),
 		jsLibFilter = $.filter('**/' + config.optimised.lib, {restore: true}),
 		jsAppFilter = $.filter('**/' + config.optimised.app, {restore: true});
 	
 	return gulp
 		.src(config.index)
-		
 		.pipe($.plumber())
 		.pipe($.inject(gulp.src(templateCache, {read: false}), {
 			starttag: '<!-- inject:templates:js -->'
 		}))
+		.pipe($.useref({searchPath: './'}, lazypipe().pipe($.sourcemaps.init, { loadMaps: true })))
+		.pipe(cssFilter)
+		.pipe($.csso())
+		.pipe(cssFilter.restore)
 		.pipe($.sourcemaps.init())
-			.pipe($.useref({searchPath: './'}))
-			.pipe(cssFilter)
-			.pipe($.csso())
-			.pipe(cssFilter.restore)
-			.pipe($.sourcemaps.init())
-			.pipe(jsLibFilter)
-			.pipe($.uglify())
-			.pipe(jsLibFilter.restore)
-			.pipe(jsAppFilter)
-			.pipe($.ngAnnotate())
-			.pipe($.uglify())
-			.pipe(jsAppFilter.restore)
+		.pipe(jsLibFilter)
+		.pipe($.uglify())
+		.pipe(jsLibFilter.restore)
+		.pipe(jsAppFilter)
+		.pipe($.ngAnnotate())
+		.pipe($.uglify())
+		.pipe(jsAppFilter.restore)
 		.pipe($.sourcemaps.write())
 		.pipe(gulp.dest(config.build));
 		
