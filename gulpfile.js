@@ -33,8 +33,10 @@ gulp.task('styles', ['clean-styles'], function () {
 	return gulp
 		.src(config.lessMainFile)
 		.pipe($.plumber())
+		.pipe($.sourcemaps.init({ loadMaps: true }))
 		.pipe($.less())
 		.pipe($.autoprefixer({browsers: ['last 2 version']}))
+		.pipe($.sourcemaps.write())
 		.pipe(gulp.dest(config.temp));	// TODO add the config
 });
 
